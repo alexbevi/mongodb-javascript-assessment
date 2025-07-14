@@ -236,37 +236,22 @@ const App: React.FC = () => {
                     }}
                     onClick={() => setSelectedMovie(m)}
                   >
-                    {m.poster ? (
-                      <img
-                        src={m.poster}
-                        alt={m.title}
-                        style={{
-                          width: '100%',
-                          height: 280,
-                          objectFit: 'cover',
-                          borderRadius: 12,
-                          marginBottom: 12,
-                          boxShadow: '0 2px 8px #0006'
-                        }}
-                        onError={(e) => {
-                          e.currentTarget.onerror = null;
-                          e.currentTarget.src = 'https://via.placeholder.com/200x280?text=No+Image';
-                        }}
-                      />
-                    ) : (
-                      <img
-                        src="https://via.placeholder.com/200x280?text=No+Image"
-                        alt="No poster available"
-                        style={{
-                          width: '100%',
-                          height: 280,
-                          objectFit: 'cover',
-                          borderRadius: 12,
-                          marginBottom: 12,
-                          boxShadow: '0 2px 8px #0006'
-                        }}
-                      />
-                    )}
+                    <img
+                      src={m.poster ? m.poster : 'https://placehold.co/200x280/000000/FFFFFF.png?text=No+Image'}
+                      alt={m.poster ? m.title : 'No poster available'}
+                      style={{
+                        width: '100%',
+                        height: 280,
+                        objectFit: 'cover',
+                        borderRadius: 12,
+                        marginBottom: 12,
+                        boxShadow: '0 2px 8px #0006'
+                      }}
+                      onError={(e) => {
+                        e.currentTarget.onerror = null;
+                        e.currentTarget.src = 'https://placehold.co/200x280/000000/FFFFFF.png?text=No+Image';
+                      }}
+                    />
                     <h3 style={{ fontSize: '1.2rem', margin: '10px 0 4px 0', fontWeight: 600 }}>
                       {m.title}
                     </h3>
@@ -331,37 +316,22 @@ const App: React.FC = () => {
               aria-label="Close"
             >×</button>
             <div style={{ textAlign: 'center' }}>
-              {selectedMovie.poster ? (
-                <img
-                  src={selectedMovie.poster}
-                  alt={selectedMovie.title}
-                  style={{
-                    width: '100%',
-                    height: 340,
-                    objectFit: 'cover',
-                    borderRadius: 14,
-                    marginBottom: 18,
-                    boxShadow: '0 2px 8px #0006',
-                  }}
-                  onError={(e) => {
-                    e.currentTarget.onerror = null;
-                    e.currentTarget.src = 'https://via.placeholder.com/340x340?text=No+Image';
-                  }}
-                />
-              ) : (
-                <img
-                  src="https://via.placeholder.com/340x340?text=No+Image"
-                  alt="No poster available"
-                  style={{
-                    width: '100%',
-                    height: 340,
-                    objectFit: 'cover',
-                    borderRadius: 14,
-                    marginBottom: 18,
-                    boxShadow: '0 2px 8px #0006',
-                  }}
-                />
-              )}
+            <img
+              src={selectedMovie.poster ? selectedMovie.poster : 'https://via.placeholder.com/340x340?text=No+Image'}
+              alt={selectedMovie.poster ? selectedMovie.title : 'No poster available'}
+              style={{
+                width: '100%',
+                height: 340,
+                objectFit: 'cover',
+                borderRadius: 14,
+                marginBottom: 18,
+                boxShadow: '0 2px 8px #0006',
+              }}
+              onError={(e) => {
+                e.currentTarget.onerror = null;
+                e.currentTarget.src = 'https://via.placeholder.com/340x340?text=No+Image';
+              }}
+            />
             </div>
             <h2 style={{ fontSize: '2rem', margin: '10px 0 8px 0', fontWeight: 700, textAlign: 'center' }}>{selectedMovie.title}</h2>
             <p style={{ color: '#ffd700', fontSize: '1.2rem', fontWeight: 600, margin: '0 0 10px 0', textAlign: 'center' }}>Year: {selectedMovie.year}{selectedMovie.rated ? ` | Rated: ${selectedMovie.rated}` : ''}</p>

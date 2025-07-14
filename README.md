@@ -3,6 +3,8 @@
 
 An interactive movie browser built with React, Node.js, and MongoDB, featuring the [MongoDB Sample Mflix Dataset](https://www.mongodb.com/docs/atlas/sample-data/sample-mflix/).
 
+![](docs/ss01.png)
+
 ## Features
 
 - Browse, search, and filter movies from the Mflix dataset
