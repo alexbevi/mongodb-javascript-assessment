@@ -25,24 +25,14 @@ This project can be used during a technical interview to assess the JavaScript/T
 - Click a movie to view detailed info in a modal (plot, genres, cast, directors, ratings, awards, etc.)
 - Backend API with search and pagination, powered by Express and MongoDB
 
-## Project Structure
-
-- `app/` — React frontend (TypeScript, Create React App)
-- `server/` — Node.js backend (Express, MongoDB)
-
 ## Getting Started
 
 ### Prerequisites
 - Node.js (v18+ recommended)
 - MongoDB Atlas account (or local MongoDB with the `sample_mflix` dataset)
+- Basic understand of TypeScript, JavaScript, React, Express and some MongoDB
 
-### 1. Clone the repository
-```bash
-git clone <your-repo-url>
-cd mongodb-ts-assessment
-```
-
-### 2. Setup the Backend
+### Setup the Backend
 1. Copy `.env.example` to `.env` in the `server/` folder and set your `MONGODB_URI`. For more information as to where to find this value see ["Find Your MongoDB Atlas Connection String"](https://www.mongodb.com/docs/manual/reference/connection-string/#find-your-mongodb-atlas-connection-string).
 2. Install dependencies:
    ```bash
@@ -55,7 +45,7 @@ cd mongodb-ts-assessment
    ```
    The API will run on [http://localhost:4000](http://localhost:4000) by default.
 
-### 3. Setup the Frontend
+### Setup the Frontend
 1. In a new terminal, go to the `app/` folder:
    ```bash
    cd ../app
@@ -67,7 +57,7 @@ cd mongodb-ts-assessment
    ```
    The app will run on [http://localhost:3000](http://localhost:3000).
 
-### 4. Proxy Setup
+### Proxy Setup
 The React app is configured to proxy `/api` requests to the backend server. Make sure both servers are running.
 
 ## API Endpoints
