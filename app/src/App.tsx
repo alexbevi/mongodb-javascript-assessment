@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
+
 import { Movie } from './types/Movie';
 import { ApiResponse } from './types/ApiResponse';
+import PageSizeSelector from './components/PageSizeSelector';
+import SearchForm from './components/SearchForm';
+import Pagination from './components/Pagination';
 
 
 const App: React.FC = () => {
@@ -89,74 +93,21 @@ const App: React.FC = () => {
       </header>
       <main style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 24, flexWrap: 'wrap', gap: 16 }}>
-          <form
-            onSubmit={e => {
-              e.preventDefault();
+          <SearchForm
+            searchInput={searchInput}
+            setSearchInput={setSearchInput}
+            onSearch={() => {
               setSearch(searchInput.trim());
               setPage(1);
             }}
-            style={{ display: 'flex', alignItems: 'center', gap: 12 }}
-          >
-            <input
-              type="text"
-              placeholder="Search by title..."
-              value={searchInput}
-              onChange={e => setSearchInput(e.target.value)}
-              style={{
-                padding: '10px 16px',
-                borderRadius: 8,
-                border: '1px solid #888',
-                fontSize: '1.1rem',
-                width: 240,
-                background: '#232526',
-                color: '#ffd700',
-                outline: 'none',
-                fontWeight: 500,
-                marginRight: 4,
-              }}
-            />
-            <button
-              type="submit"
-              style={{
-                background: '#40a9ff',
-                color: '#fff',
-                border: 'none',
-                borderRadius: 8,
-                padding: '10px 24px',
-                fontWeight: 600,
-                fontSize: '1.1rem',
-                cursor: 'pointer',
-                boxShadow: '0 2px 8px #0003',
-                transition: 'background 0.2s',
-              }}
-            >Search</button>
-          </form>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <label htmlFor="page-size-select" style={{ color: '#fff', fontWeight: 500, marginRight: 8 }}>Page size:</label>
-            <select
-              id="page-size-select"
-              value={pageSize}
-              onChange={e => {
-                setPageSize(Number(e.target.value));
-                setPage(1); // Reset to first page when page size changes
-              }}
-              style={{
-                padding: '6px 12px',
-                borderRadius: 6,
-                border: '1px solid #888',
-                fontSize: '1rem',
-                fontWeight: 500,
-                background: '#232526',
-                color: '#ffd700',
-                outline: 'none',
-                cursor: 'pointer',
-              }}
-            >
-              {[10, 25, 50, 100].map(opt => (
-                <option key={opt} value={opt}>{opt}</option>
-              ))}
-            </select>
-          </div>
+          />
+          <PageSizeSelector
+            pageSize={pageSize}
+            setPageSize={(size) => {
+              setPageSize(size);
+              setPage(1);
+            }}
+          />
         </div>
         {loading && <div style={{ color: '#fff', textAlign: 'center', fontSize: '1.2rem' }}>Loading...</div>}
         {error && <div style={{ color: '#ff4d4f', textAlign: 'center', fontWeight: 500 }}>Error: {error}</div>}
@@ -329,91 +280,12 @@ const App: React.FC = () => {
         </div>
       )}
             </div>
-            <div style={{ textAlign: 'center', marginBottom: 32, display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center', gap: 12 }}>
-              <button
-                onClick={() => setPage(p => Math.max(p - 1, 1))}
-                disabled={page === 1}
-                style={{
-                  background: page === 1 ? '#888' : '#ffd700',
-                  color: '#232526',
-                  border: 'none',
-                  borderRadius: 8,
-                  padding: '10px 24px',
-                  fontWeight: 600,
-                  fontSize: '1rem',
-                  cursor: page === 1 ? 'not-allowed' : 'pointer',
-                  boxShadow: '0 2px 8px #0003',
-                  transition: 'background 0.2s',
-                }}
-              >Prev</button>
-              <span style={{ color: '#fff', fontSize: '1.1rem', fontWeight: 500 }}> Page {page} of {totalPages} </span>
-              <form
-                onSubmit={e => {
-                  e.preventDefault();
-                  const form = e.target as HTMLFormElement;
-                  const input = form.elements.namedItem('jumpPage') as HTMLInputElement;
-                  let val = Number(input.value);
-                  if (!isNaN(val) && val >= 1 && val <= totalPages) {
-                    setPage(val);
-                  }
-                  input.value = '';
-                }}
-                style={{ display: 'inline-flex', alignItems: 'center', margin: '0 8px' }}
-              >
-                <label htmlFor="jumpPage" style={{ color: '#fff', marginRight: 4, fontSize: '1rem' }}>Jump to:</label>
-                <input
-                  id="jumpPage"
-                  name="jumpPage"
-                  type="number"
-                  min={1}
-                  max={totalPages}
-                  placeholder="Page #"
-                  style={{
-                    width: 70,
-                    padding: '6px 8px',
-                    borderRadius: 6,
-                    border: '1px solid #888',
-                    fontSize: '1rem',
-                    fontWeight: 500,
-                    background: '#232526',
-                    color: '#ffd700',
-                    outline: 'none',
-                    marginRight: 4,
-                  }}
-                />
-                <button
-                  type="submit"
-                  style={{
-                    background: '#40a9ff',
-                    color: '#fff',
-                    border: 'none',
-                    borderRadius: 6,
-                    padding: '6px 14px',
-                    fontWeight: 600,
-                    fontSize: '1rem',
-                    cursor: 'pointer',
-                    boxShadow: '0 2px 8px #0003',
-                    transition: 'background 0.2s',
-                  }}
-                >Go</button>
-              </form>
-              <button
-                onClick={() => setPage(p => Math.min(p + 1, totalPages))}
-                disabled={!!data && page === totalPages}
-                style={{
-                  background: !!data && page === totalPages ? '#888' : '#ffd700',
-                  color: '#232526',
-                  border: 'none',
-                  borderRadius: 8,
-                  padding: '10px 24px',
-                  fontWeight: 600,
-                  fontSize: '1rem',
-                  cursor: !!data && page === totalPages ? 'not-allowed' : 'pointer',
-                  boxShadow: '0 2px 8px #0003',
-                  transition: 'background 0.2s',
-                }}
-              >Next</button>
-            </div>
+            <Pagination
+              page={page}
+              totalPages={totalPages}
+              setPage={setPage}
+              isDisabled={!!data && data.total === 0}
+            />
           </>
         )}
       </main>
