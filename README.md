@@ -26,7 +26,7 @@ This project can be used during a technical interview to assess the JavaScript/T
 
 ### Prerequisites
 - Node.js (v18+ recommended)
-- MongoDB Atlas account (or local MongoDB with the sample_mflix database)
+- MongoDB Atlas account (or local MongoDB with the `sample_mflix` dataset)
 
 ### 1. Clone the repository
 ```bash
@@ -65,11 +65,6 @@ The React app is configured to proxy `/api` requests to the backend server. Make
 ## API Endpoints
 
 - `GET /api/movies?page=1&limit=10&search=title` — List movies with pagination and optional title search
-
-## Customization
-
-- Update the UI or add new features in `app/src/App.tsx`
-- Extend backend logic in `server/src/server.ts`
 
 ## License
 
