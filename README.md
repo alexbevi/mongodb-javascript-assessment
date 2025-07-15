@@ -5,9 +5,13 @@ An interactive movie browser built with React, Node.js, and MongoDB, featuring t
 
 ![](docs/ss01.png)
 
+## Purpose
+
+This project can be used during a technical interview to assess the JavaScript/TypeScript programming capabilities of a candidate. Successful completion of the assessment would result in a web application that can interact with a [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) cluster that has been pre-loaded with the [`sample_mflix` dataset](https://www.mongodb.com/docs/atlas/sample-data/sample-mflix/).
+
 ## Features
 
-- Browse, search, and filter movies from the Mflix dataset
+- Browse, search, and filter movies from the `sample_mflix` dataset
 - Pagination with page size selection and jump-to-page
 - Responsive movie grid with poster images
 - Click a movie to view detailed info in a modal (plot, genres, cast, directors, ratings, awards, etc.)
@@ -31,7 +35,7 @@ cd mongodb-ts-assessment
 ```
 
 ### 2. Setup the Backend
-1. Copy `.env.example` to `.env` in the `server/` folder and set your `MONGODB_URI`.
+1. Copy `.env.example` to `.env` in the `server/` folder and set your `MONGODB_URI`. For more information as to where to find this value see ["Find Your MongoDB Atlas Connection String"](https://www.mongodb.com/docs/manual/reference/connection-string/#find-your-mongodb-atlas-connection-string).
 2. Install dependencies:
    ```bash
    cd server

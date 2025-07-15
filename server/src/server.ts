@@ -16,7 +16,7 @@ MongoClient.connect(MONGODB_URI)
     moviesColl = db.collection('movies');
     app.listen(PORT, () => console.log(`API listening on ${PORT}`));
   })
-  .catch(console.error);
+  .catch((ex) => console.log(`Failed to connect to MongoDB: ${ex.message} Is your MONGODB_URI correct?`));
 
 app.get('/api/movies', async (req, res) => {
   try {
