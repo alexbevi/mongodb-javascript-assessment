@@ -31,7 +31,7 @@ This project can be used during a technical interview to assess the JavaScript/T
 ### Prerequisites
 - Node.js (v18+ recommended)
 - MongoDB Atlas account (or local MongoDB with the `sample_mflix` dataset)
-- Basic understand of TypeScript, JavaScript, React, Express and some MongoDB
+- Basic understand of TypeScript, JavaScript, React, Express and some MongoDB (the [Node.js driver](https://www.mongodb.com/docs/drivers/node/current/) will be used, so the [API docs](https://mongodb.github.io/node-mongodb-native/6.17/) may be useful)
 
 ### Setup the Backend
 1. Copy `.env.example` to `.env` in the `server/` folder and set your `MONGODB_URI`. For more information as to where to find this value see ["Find Your MongoDB Atlas Connection String"](https://www.mongodb.com/docs/manual/reference/connection-string/#find-your-mongodb-atlas-connection-string).
