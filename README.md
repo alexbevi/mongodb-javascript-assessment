@@ -52,9 +52,9 @@ This project can be used during a technical interview to assess the JavaScript/T
    cd ../app
    npm install
    ```
-2. Start the React app:
+2. Start the React app (using Vite):
    ```bash
-   npm start
+   npm run dev
    ```
    The app will run on [http://localhost:3000](http://localhost:3000).
 
