@@ -14,6 +14,7 @@ This project can be used during a technical interview to assess the JavaScript/T
 > * Clone the repository
 > * Install dependencies, configure the solution, start all processes and try navigating to https://localhost:3000
 > * Using the API only, access the 10th page of results with a page size of 25
+> * Add a new API method to create a new movie (only the `title` and `year` need to be recorded). Demonstrate this works by creating a new movie and retrieving it via the appropriate APIs.
 > * The page sizes of 10, 25, 50 and 100 seem like too many - remove 100 from the UI
 > * Each movie contains an IMDB rating. Adapt the solution to enable filtering for movies with a rating greater than a given value, but less than 10:
 >   * Update the UI to create a new component
@@ -21,7 +22,6 @@ This project can be used during a technical interview to assess the JavaScript/T
 >   * Update the server to apply the ratings filter if present
 >   * Validate the rating to ensure it is greater than 0 and less than or equal to 10
 >   * Note that using the MongoDB Shell this might look like the following: `db.movies.find({ "imdb.rating": { $gte: 7.3 } })`
-> * Add a new API method to create a new movie (only the `title` and `year` need to be recorded). Demonstrate this works by creating a new movie and retrieving it via the appropriate APIs.
 
 ## Features
 
