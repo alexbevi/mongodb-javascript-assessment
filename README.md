@@ -53,7 +53,7 @@ This project can be used during a technical interview to assess the JavaScript/T
    npm install
    ```
 
-   > [!info]
+   >[!NOTE]
    > If you get a `npm error While resolving: vite@7.0.5` error try the following instead:
    > `npm install --legacy-peer-deps`
 
