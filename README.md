@@ -52,6 +52,11 @@ This project can be used during a technical interview to assess the JavaScript/T
    cd ../app
    npm install
    ```
+
+   > [!info]
+   > If you get a `npm error While resolving: vite@7.0.5` error try the following instead:
+   > `npm install --legacy-peer-deps`
+
 2. Start the React app (using Vite):
    ```bash
    npm run dev
