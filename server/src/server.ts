@@ -33,7 +33,7 @@ app.get('/api/movies', async (req, res) => {
     const total = await moviesColl.countDocuments(filter);
     const movies = (await moviesColl
       .find(filter)
-      .sort({ year: -1 })
+      .sort({ year: -1, name: 1 })
       .skip(skip)
       .limit(limit)
       .project({ plot_embedding: 0, plot_embedding_voyage_3_large: 0 })
